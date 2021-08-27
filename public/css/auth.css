@@ -1,0 +1,18 @@
+.login-form {
+  width: 20rem;
+  max-width: 90%;
+  margin: auto;
+  display: block;
+}
+
+.login-button-container, .signup-button-container {
+  text-align: center;
+}
+
+.reset_container {
+  margin-top: 2%;
+}
+
+.add-product-button-container {
+  text-align: center;
+}
