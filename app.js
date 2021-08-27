@@ -8,16 +8,14 @@ const MongoDBStore = require('connect-mongodb-session')(session);
 const csrf = require('csurf');
 const flash = require('connect-flash');
 const PORT = process.env.PORT || 4000;
+const MONGO_URI = process.env.MONGO_URI;
 
 const errorController = require('./controllers/error');
 const User = require('./models/user');
 
-const MONGODB_URI =
-  'mongodb+srv://andrew:helloworld@cluster0.memof.mongodb.net/shop';
-
 const app = express();
 const store = new MongoDBStore({
-  uri: MONGODB_URI,
+  uri: MONGO_URI,
   collection: 'sessions'
 });
 const csrfProtection = csrf();
@@ -67,7 +65,7 @@ app.use(authRoutes);
 app.use(errorController.get404);
 
 mongoose
-  .connect(MONGODB_URI)
+  .connect(MONGO_URI)
   .then(result => {
     app.listen(PORT, () => {
       console.log("Server is up and running!")
